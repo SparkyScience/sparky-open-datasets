@@ -1,0 +1,64 @@
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Node
+node_modules/
+dist/
+.env
+
+
+
+# ---- Windows junk ----
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Windows Installer cache / logs (optional)
+*.log
+
+# ---- OneDrive / cloud-sync artifacts ----
+*.lnk
+*.url
+*.tmp
+*.temp
+*.bak
+
+# Office temp files often created in OneDrive-synced folders
+~$*.doc*
+~$*.xls*
+~$*.ppt*
+~$*.vsdx*
+
+# OneDrive placeholder / sync conflict patterns (best-effort)
+* - Copy.*
+* - Copy (*).*
+* (1).*
+* (2).*
+
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS volume metadata
+.Icon?
+._*
+.Spotlight-V100
+.Trashes

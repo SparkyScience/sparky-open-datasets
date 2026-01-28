@@ -1,8 +1,15 @@
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="/.github/assets/sparky_dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset="\.github\assets\sparky_light.svg">
-    <img src="\.github\assets\sparky_light.svg" alt="Sparky Logo" width="200">
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="https://raw.githubusercontent.com/SparkyScience/sparky-open-datasets/main/.github/assets/sparky_dark.svg">
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="https://raw.githubusercontent.com/SparkyScience/sparky-open-datasets/main/.github/assets/sparky_light.svg">
+    <img
+      src="https://raw.githubusercontent.com/SparkyScience/sparky-open-datasets/main/.github/assets/sparky_light.svg"
+      alt="Sparky Logo"
+      width="200">
   </picture>
 
   <h1>Sparky Open Datasets</h1>

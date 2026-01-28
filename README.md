@@ -1,7 +1,7 @@
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/sparky_dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset=".github/assets/sparky_light.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="/.github/assets/sparky_dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset="/.github/assets/sparky_light.svg">
     <img src="/.github/assets/sparky_light.svg" alt="Sparky Logo" width="200"/>
   </picture>
 

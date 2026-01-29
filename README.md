@@ -37,7 +37,7 @@
 
 ## 🌟 Welcome
 
-Welcome to **Sparky Open Datasets**, a commitment to advancing open science by providing high-quality, well-documented datasets that enable researchers, educators, and practitioners worldwide to conduct reproducible research, explore market trends, develop analytical methods, and foster innovation through open data.
+Welcome to **Open Datasets**, a commitment to advancing open science by providing high-quality, well-documented datasets that enable researchers, educators, and practitioners worldwide to conduct reproducible research, explore market trends, develop analytical methods, and foster innovation through open data.
 
 Our mission is to connect people, technology, and data to drive meaningful insights across industries, from sustainability to healthcare.
 

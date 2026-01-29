@@ -59,7 +59,7 @@ df.set_index('datetime', inplace=True)
 - **Format:** YYYY-MM-DD
 - **Example:** "2025-07-05"
 - **Range:** 2025-07-05 to 2025-07-07
-- **Unique Values:** 3 dates
+- **Unique Values:** 2 dates (July 6 is missing)
 - **Notes:** Extracted from directory structure during processing
 - **Null Values:** None
 
@@ -321,14 +321,17 @@ df['acc_zcr'] = (df['AccX'].diff().apply(np.sign).diff() != 0).rolling(window).s
 
 ### Completeness
 - ✅ **100% Complete:** No missing values in any field
-- ✅ **Consistent Sampling:** Regular ~19ms intervals (52 Hz)
-- ✅ **No Outliers:** All values within sensor specification ranges
+- ⚠️ **Duplicate Timestamps:** ~93% of records share timestamps (same sensor_id + datetime + timestamp_ms) with different measurement values
+- ⚠️ **Not Chronologically Sorted:** 506 records are out of order - sort by datetime before analysis
 
 ### Known Characteristics
 - **Sampling Jitter:** ±2-3ms variation in sampling intervals (typical for Bluetooth LE)
 - **Magnetic Interference:** Hospital environment creates complex magnetic fields
 - **Gravity Component:** Accelerometer always includes 1g (~9.81 m/s²) gravity vector
 - **Drift:** Gyroscope may show small drift over long periods (integrate with caution)
+- **Gyroscope Bias:** Y-axis shows bias of -1.76 to -2.65 deg/s when stationary
+- **Magnetometer Calibration:** Sensor 14B05B22F4B4 shows readings outside expected Earth field range (possible calibration issue)
+- **Temporal Gaps:** Large gaps exist between July 5 and July 7 (July 6 is missing from dataset)
 
 ### Sensor Specifications (Sparky Health Sensor SHS-IMU9)
 
@@ -387,7 +390,7 @@ df_resampled = df.set_index('datetime').resample('100ms').mean()
 ## Contact
 
 For questions about the data schema or to report data quality issues:
-- **GitHub Issues:** https://github.com/SparkyScience/sparky-open-datasets/issues
+- **GitHub Issues:** https://github.com/sparky/sparky-open-datasets/issues
 - **Label:** `healthchain` or `data-quality`
 
 ---

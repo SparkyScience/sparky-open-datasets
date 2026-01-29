@@ -42,7 +42,7 @@ Through applied data science and AI, Sparky* supported the development of approa
 - **Total Records:** 183,736 measurements (Subset of original Dataset)
 - **Sensors:** 3 Sparky Health Sensor SHS-IMU9 devices (3/8 used in the project)
 - **Sampling Rate:** ~52 Hz (high-frequency real-time monitoring)
-- **Recording Period:** July 5-7, 2025 (2 days)
+- **Recording Period:** July 5 and 7, 2025 (2 non-consecutive days)
 - **Total Recording Hours:** 17 hours across multiple sessions
 - **Data Types:** 9-axis IMU data (accelerometer, gyroscope, magnetometer)
 - **Clinical Study:** 55 patients, 3-month study period, average 1-week hospital stay per patient
@@ -126,8 +126,7 @@ This dataset is valuable for:
 |------|--------|------|---------|-------------|
 | `healthchain_sensor_data.csv` | CSV | ~18 MB | 183,736 | Complete dataset (all sensors, all timepoints) |
 | `healthchain_sensor_data.parquet` | Parquet | ~3 MB | 183,736 | Compressed columnar format (recommended) |
-| `healthchain_sensor_data_sample.json` | JSON | ~2.5 MB | 10,000 | Sample for exploration (first 10k records) |
-| `sensor_mapping.json` | JSON | <1 KB | 3 | Anonymized sensor-to-patient mapping |
+| `healthchain_sensor_data.json` | JSON | ~3 MB | 10,000 | Sample for exploration (first 10k records) |
 | `by_sensor/sensor_*.parquet` | Parquet | - | Varies | Individual sensor data files |
 
 ## 📖 Data Schema
@@ -171,15 +170,19 @@ Each sensor record contains:
 - ✅ **Real-world Clinical Data:** Collected in actual hospital environment
 - ✅ **Medical-grade Sensors:** Certified devices with calibrated measurements
 - ✅ **No Missing Values:** Complete data for all 183,736 records
-- ✅ **Synchronized Timing:** Precise timestamps across all sensors
 - ✅ **Privacy Protected:** Fully anonymized and GDPR compliant
 
 ### Limitations
-- ⚠️ **Limited Temporal Scope:** 2-day sample from 3-month study
+- ⚠️ **Limited Temporal Scope:** 2-day sample from 3-month study (July 5 and 7, missing July 6)
 - ⚠️ **Small Sensor Count:** 3 sensors (representative subset of 55-patient study)
 - ⚠️ **No Clinical Labels:** No diagnoses, outcomes, or clinical annotations included
 - ⚠️ **No Demographics:** Patient age, gender, condition not disclosed (privacy)
 - ⚠️ **Environmental Variation:** Hospital-only setting (not ambulatory/home)
+- ⚠️ **Duplicate Timestamps:** ~93% of records share timestamps with other records (same sensor_id + datetime + timestamp_ms, different values) - consider deduplication or adding unique row identifiers
+- ⚠️ **Uneven Sensor Distribution:** Data is unevenly distributed across sensors (76% from FFEC838A6903, 19% from D7DF2CD97604, 5% from 14B05B22F4B4)
+- ⚠️ **Not Chronologically Sorted:** 506 records are out of chronological order - sort by datetime before time-series analysis
+- ⚠️ **Magnetometer Calibration:** Sensor 14B05B22F4B4 shows only 9.1% of readings in expected range (20-100 μT) - possible calibration issue
+- ⚠️ **Gyroscope Bias:** Gyroscope Y-axis shows bias of -1.76 to -2.65 deg/s when stationary (expected ~0 deg/s)
 
 ## 💻 Usage Examples
 
@@ -342,16 +345,16 @@ If you use this dataset in your research, please cite:
   month = {January},
   publisher = {GitHub},
   version = {1.0},
-  url = {https://github.com/SparkyScience/sparky-open-datasets/tree/main/datasets/healthchain-sensor-data},
+  url = {https://github.com/sparky/sparky-open-datasets/tree/main/datasets/healthchain-sensor-data},
   note = {IMU sensor measurements from 3 Sparky Health Sensors, July 2025}
 }
 ```
 
 **APA Format:**
-Sparky solution d.o.o. (2026, January). *HealthChain Real-Time Health Sensor Dataset* (Version 1.0) [Dataset]. GitHub. https://github.com/SparkyScience/sparky-open-datasets/tree/main/datasets/healthchain-sensor-data
+Sparky solution d.o.o. (2026, January). *HealthChain Real-Time Health Sensor Dataset* (Version 1.0) [Dataset]. GitHub. https://github.com/sparky/sparky-open-datasets/tree/main/datasets/healthchain-sensor-data
 
 **MLA Format:**
-Sparky solution d.o.o. "HealthChain Real-Time Health Sensor Dataset." Version 1.0, GitHub, Jan. 2026, https://github.com/SparkyScience/sparky-open-datasets/tree/main/datasets/healthchain-sensor-data.
+Sparky solution d.o.o. "HealthChain Real-Time Health Sensor Dataset." Version 1.0, GitHub, Jan. 2026, https://github.com/sparky/sparky-open-datasets/tree/main/datasets/healthchain-sensor-data.
 
 ## ⚖️ Privacy & Ethical Compliance
 
@@ -416,7 +419,7 @@ The HealthChain project contributed to:
 
 For questions, issues, or collaboration opportunities:
 
-- **GitHub Issues:** [Report an issue](https://github.com/SparkyScience/sparky-open-datasets/issues)
+- **GitHub Issues:** [Report an issue](https://github.com/sparky/sparky-open-datasets/issues)
 - **Email:** [info@sparky.science](mailto:info@sparky.science)
 - **Sparky* Website:** [sparky.science](https://sparky.science)
 - **Project Website:** [HealthChain](https://healthchain-i3.eu)
@@ -442,7 +445,7 @@ This dataset is licensed under the [Creative Commons Attribution 4.0 Internation
 
 **Part of the [Sparky Open Datasets](../../) collection**
 
-[← Back to All Datasets](../../README.md) | [Data Dictionary](data_dictionary.md) | [Report Issue](https://github.com/SparkyScience/sparky-open-datasets/issues)
+[← Back to All Datasets](../../README.md) | [Data Dictionary](data_dictionary.md) | [Report Issue](https://github.com/sparky/sparky-open-datasets/issues)
 
 <br><br>
 
